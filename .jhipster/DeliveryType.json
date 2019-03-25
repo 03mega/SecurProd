@@ -1,0 +1,32 @@
+{
+    "name": "DeliveryType",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "deliveryDeliveryType",
+            "otherEntityRelationshipName": "deliveryType",
+            "relationshipName": "deliveryDeliveryType"
+        },
+        {
+            "relationshipName": "deliveryDeliveryTypeProduct",
+            "otherEntityName": "deliveryDeliveryTypeProduct",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190325135648",
+    "entityTableName": "delivery_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

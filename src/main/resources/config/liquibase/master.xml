@@ -5,6 +5,31 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135645_added_entity_Client.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135646_added_entity_Control.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135647_added_entity_Delivery.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135648_added_entity_DeliveryType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135649_added_entity_DeliveryDeliveryType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135650_added_entity_Parcel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135651_added_entity_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135652_added_entity_Program.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135653_added_entity_Unit.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135654_added_entity_ProgramProduct.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135655_added_entity_ParcelProducts.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135656_added_entity_Stamp.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135657_added_entity_StampCancelled.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135658_added_entity_ProductDelivery.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135659_added_entity_ParcelControl.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135700_added_entity_DeliveryDeliveryTypeProduct.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190325135647_added_entity_constraints_Delivery.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135648_added_entity_constraints_DeliveryType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135649_added_entity_constraints_DeliveryDeliveryType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135650_added_entity_constraints_Parcel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135651_added_entity_constraints_Product.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135652_added_entity_constraints_Program.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135656_added_entity_constraints_Stamp.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135657_added_entity_constraints_StampCancelled.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190325135659_added_entity_constraints_ParcelControl.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

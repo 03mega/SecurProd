@@ -1,0 +1,59 @@
+{
+    "name": "Parcel",
+    "fields": [
+        {
+            "fieldName": "barreCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "pageNumber",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "dateCreated",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dateChanged",
+            "fieldType": "LocalDate"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "stamp",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "stamp"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "delivery",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "delivery",
+            "otherEntityField": "borderDelivery"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "parcelControl",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "parcelControl",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "parcelProducts",
+            "otherEntityRelationshipName": "parcel",
+            "relationshipName": "parcelProducts",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190325135650",
+    "entityTableName": "parcel",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

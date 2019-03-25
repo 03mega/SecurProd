@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="deliveryDeliveryType">
+            <h2><span>Delivery Delivery Type</span> {{deliveryDeliveryType.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Delivery</span></dt>
+                <dd>
+                    <div *ngIf="deliveryDeliveryType.delivery">
+                        <a [routerLink]="['/delivery', deliveryDeliveryType.delivery?.id, 'view']">{{deliveryDeliveryType.delivery?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Delivery Type</span></dt>
+                <dd>
+                    <div *ngIf="deliveryDeliveryType.deliveryType">
+                        <a [routerLink]="['/delivery-type', deliveryDeliveryType.deliveryType?.id, 'view']">{{deliveryDeliveryType.deliveryType?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/delivery-delivery-type', deliveryDeliveryType.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

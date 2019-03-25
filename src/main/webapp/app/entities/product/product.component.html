@@ -1,0 +1,101 @@
+<div>
+    <h2 id="page-heading">
+        <span>Products</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-product" [routerLink]="['/product/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down" >
+            Create new Product
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query">
+                    <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
+                        <fa-icon [icon]="'search'"></fa-icon>
+                    </button>
+                    <button class="input-group-append btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <fa-icon [icon]="'trash-alt'"></fa-icon>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="products">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="reset.bind(this)">
+            <th jhiSortBy="id"><span>ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="productCode"><span>Product Code</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span>Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="program.name"><span>Program</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parcelProducts.id"><span>Parcel Products</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="programProduct.id"><span>Program Product</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="productDelivery.id"><span>Product Delivery</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="deliveryDeliveryTypeProduct.id"><span>Delivery Delivery Type Product</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody infinite-scroll (scrolled)="loadPage(page + 1)" [infiniteScrollDisabled]="page >= links['last']" [infiniteScrollDistance]="0">
+            <tr *ngFor="let product of products ;trackBy: trackId">
+                <td><a [routerLink]="['/product', product.id, 'view' ]">{{product.id}}</a></td>
+                <td>{{product.productCode}}</td>
+                <td>{{product.name}}</td>
+                <td>
+                    <div *ngIf="product.program">
+                        <a [routerLink]="['../program', product.program?.id, 'view' ]" >{{product.program?.name}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.parcelProducts">
+                        <a [routerLink]="['../parcel-products', product.parcelProducts?.id, 'view' ]" >{{product.parcelProducts?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.programProduct">
+                        <a [routerLink]="['../program-product', product.programProduct?.id, 'view' ]" >{{product.programProduct?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.productDelivery">
+                        <a [routerLink]="['../product-delivery', product.productDelivery?.id, 'view' ]" >{{product.productDelivery?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="product.deliveryDeliveryTypeProduct">
+                        <a [routerLink]="['../delivery-delivery-type-product', product.deliveryDeliveryTypeProduct?.id, 'view' ]" >{{product.deliveryDeliveryTypeProduct?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/product', product.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/product', product.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'product', { outlets: { popup: product.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

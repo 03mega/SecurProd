@@ -1,0 +1,32 @@
+{
+    "name": "ParcelProducts",
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "parcel",
+            "otherEntityRelationshipName": "parcelProducts",
+            "relationshipName": "parcel"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "parcelProducts",
+            "relationshipName": "product"
+        }
+    ],
+    "changelogDate": "20190325135655",
+    "entityTableName": "parcel_products",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

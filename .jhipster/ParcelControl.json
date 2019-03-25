@@ -1,0 +1,21 @@
+{
+    "name": "ParcelControl",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipName": "control",
+            "otherEntityName": "control",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190325135659",
+    "entityTableName": "parcel_control",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

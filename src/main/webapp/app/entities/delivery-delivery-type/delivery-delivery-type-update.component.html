@@ -1,0 +1,38 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-delivery-delivery-type-heading">Create or edit a Delivery Delivery Type</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!deliveryDeliveryType.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="deliveryDeliveryType.id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_delivery">Delivery</label>
+                    <select class="form-control" id="field_delivery" name="delivery" [(ngModel)]="deliveryDeliveryType.delivery" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deliveryOption.id === deliveryDeliveryType.delivery?.id ? deliveryDeliveryType.delivery : deliveryOption" *ngFor="let deliveryOption of deliveries; trackBy: trackDeliveryById">{{deliveryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deliveryType">Delivery Type</label>
+                    <select class="form-control" id="field_deliveryType" name="deliveryType" [(ngModel)]="deliveryDeliveryType.deliveryType" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deliveryTypeOption.id === deliveryDeliveryType.deliveryType?.id ? deliveryDeliveryType.deliveryType : deliveryTypeOption" *ngFor="let deliveryTypeOption of deliverytypes; trackBy: trackDeliveryTypeById">{{deliveryTypeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+entity Client {
+	code String 
+    vrCode String 
+    name String 
+    seit String
+    pspCode String
+    category String
+}
+entity Control {
+	id Long
+    controlDate LocalDate
+    status Boolean
+}
+entity Delivery {
+    borderDelivery String
+    valuationNumber String 
+    deliveryDate LocalDate
+    category String
+    zone String
+}
+entity DeliveryType {
+	id Long
+    name String 
+}
+entity DeliveryDeliveryType {
+    numberOfParcels Long
+    checker String 
+    manifold String 
+}
+entity Parcel {
+    id Long 
+    barreCode String
+    pageNumber Long
+    dateCreated LocalDate
+    dateChanged LocalDate
+}
+entity Product {
+    id Long
+    productCode String
+    name  String 
+}
+entity Program {
+    id Long
+    name String 
+}
+entity Unit{
+    id Long
+    name String 
+}
+entity ProgramProduct{
+   	id Long
+}
+entity ParcelProducts{
+     quantity Long
+}
+entity Stamp{
+	id Long 
+    eNumber Long
+}
+entity StampCancelled{
+	id Long
+    reason String 
+    imputation String
+}
+entity ProductDelivery{
+	id Long
+}
+entity DeliveryDeliveryType{
+	id Long
+}
+entity ParcelControl{
+	id Long
+}
+entity DeliveryDeliveryTypeProduct{
+	quantity Long
+}
+relationship OneToOne {
+    StampCancelled{Stamp} to Stamp
+}
+relationship ManyToOne { 
+    Product {Program(name)} to Program 
+}
+relationship ManyToOne {
+
+    Parcel{Delivery(borderDelivery)} to Delivery
+    Parcel{ParcelControl} to ParcelControl
+    Delivery{Client(code)} to Client
+    Program{Unit(name)} to Unit
+
+}
+relationship OneToMany {
+	Parcel{Stamp} to Stamp{Parcel}
+    ParcelProducts{Parcel} to Parcel{ParcelProducts}
+    ParcelProducts{Product} to Product{ParcelProducts}
+    ProgramProduct{Program} to Program{ProgramProduct}
+    ProgramProduct{Product} to Product{ProgramProduct}
+    DeliveryType{DeliveryDeliveryType} to DeliveryDeliveryType
+    Delivery{DeliveryDeliveryType} to DeliveryDeliveryType
+    ProductDelivery{Delivery(borderDelivery)} to Delivery
+    ProductDelivery{Product(name)} to Product
+    Control{ParcelControl} to ParcelControl
+    DeliveryDeliveryTypeProduct{Delivery(borderDelivery)} to Delivery
+    DeliveryDeliveryTypeProduct{Product} to Product
+    DeliveryDeliveryTypeProduct{DeliveryType} to DeliveryType
+}
+// Set pagination options
+paginate Stamp, StampCancelled, Product with infinite-scroll
+paginate Delivery, Client, Parcel with pagination
+

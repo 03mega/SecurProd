@@ -1,0 +1,38 @@
+{
+    "name": "DeliveryDeliveryTypeProduct",
+    "fields": [
+        {
+            "fieldName": "quantity",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "delivery",
+            "otherEntityRelationshipName": "deliveryDeliveryTypeProduct",
+            "relationshipName": "delivery"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "deliveryDeliveryTypeProduct",
+            "relationshipName": "product"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "deliveryType",
+            "otherEntityRelationshipName": "deliveryDeliveryTypeProduct",
+            "relationshipName": "deliveryType"
+        }
+    ],
+    "changelogDate": "20190325135700",
+    "entityTableName": "delivery_delivery_type_product",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

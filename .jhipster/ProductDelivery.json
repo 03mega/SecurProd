@@ -1,0 +1,27 @@
+{
+    "name": "ProductDelivery",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "delivery",
+            "otherEntityRelationshipName": "productDelivery",
+            "relationshipName": "delivery"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "productDelivery",
+            "relationshipName": "product"
+        }
+    ],
+    "changelogDate": "20190325135658",
+    "entityTableName": "product_delivery",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

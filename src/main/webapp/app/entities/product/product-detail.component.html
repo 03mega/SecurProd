@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="product">
+            <h2><span>Product</span> {{product.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Product Code</span></dt>
+                <dd>
+                    <span>{{product.productCode}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{product.name}}</span>
+                </dd>
+                <dt><span>Program</span></dt>
+                <dd>
+                    <div *ngIf="product.program">
+                        <a [routerLink]="['/program', product.program?.id, 'view']">{{product.program?.name}}</a>
+                    </div>
+                </dd>
+                <dt><span>Parcel Products</span></dt>
+                <dd>
+                    <div *ngIf="product.parcelProducts">
+                        <a [routerLink]="['/parcel-products', product.parcelProducts?.id, 'view']">{{product.parcelProducts?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Program Product</span></dt>
+                <dd>
+                    <div *ngIf="product.programProduct">
+                        <a [routerLink]="['/program-product', product.programProduct?.id, 'view']">{{product.programProduct?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Product Delivery</span></dt>
+                <dd>
+                    <div *ngIf="product.productDelivery">
+                        <a [routerLink]="['/product-delivery', product.productDelivery?.id, 'view']">{{product.productDelivery?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Delivery Delivery Type Product</span></dt>
+                <dd>
+                    <div *ngIf="product.deliveryDeliveryTypeProduct">
+                        <a [routerLink]="['/delivery-delivery-type-product', product.deliveryDeliveryTypeProduct?.id, 'view']">{{product.deliveryDeliveryTypeProduct?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/product', product.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

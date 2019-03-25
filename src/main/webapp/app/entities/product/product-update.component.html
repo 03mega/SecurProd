@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-product-heading">Create or edit a Product</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!product.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="product.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productCode">Product Code</label>
+                    <input type="text" class="form-control" name="productCode" id="field_productCode"
+                        [(ngModel)]="product.productCode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="product.name" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_program">Program</label>
+                    <select class="form-control" id="field_program" name="program" [(ngModel)]="product.program" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="programOption.id === product.program?.id ? product.program : programOption" *ngFor="let programOption of programs; trackBy: trackProgramById">{{programOption.name}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_parcelProducts">Parcel Products</label>
+                    <select class="form-control" id="field_parcelProducts" name="parcelProducts" [(ngModel)]="product.parcelProducts" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parcelProductsOption.id === product.parcelProducts?.id ? product.parcelProducts : parcelProductsOption" *ngFor="let parcelProductsOption of parcelproducts; trackBy: trackParcelProductsById">{{parcelProductsOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_programProduct">Program Product</label>
+                    <select class="form-control" id="field_programProduct" name="programProduct" [(ngModel)]="product.programProduct" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="programProductOption.id === product.programProduct?.id ? product.programProduct : programProductOption" *ngFor="let programProductOption of programproducts; trackBy: trackProgramProductById">{{programProductOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productDelivery">Product Delivery</label>
+                    <select class="form-control" id="field_productDelivery" name="productDelivery" [(ngModel)]="product.productDelivery" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productDeliveryOption.id === product.productDelivery?.id ? product.productDelivery : productDeliveryOption" *ngFor="let productDeliveryOption of productdeliveries; trackBy: trackProductDeliveryById">{{productDeliveryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deliveryDeliveryTypeProduct">Delivery Delivery Type Product</label>
+                    <select class="form-control" id="field_deliveryDeliveryTypeProduct" name="deliveryDeliveryTypeProduct" [(ngModel)]="product.deliveryDeliveryTypeProduct" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deliveryDeliveryTypeProductOption.id === product.deliveryDeliveryTypeProduct?.id ? product.deliveryDeliveryTypeProduct : deliveryDeliveryTypeProductOption" *ngFor="let deliveryDeliveryTypeProductOption of deliverydeliverytypeproducts; trackBy: trackDeliveryDeliveryTypeProductById">{{deliveryDeliveryTypeProductOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
