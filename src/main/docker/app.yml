@@ -1,0 +1,20 @@
+version: '2'
+services:
+    securprod-app:
+        image: securprod
+        environment:
+            - _JAVA_OPTIONS=-Xmx512m -Xms256m
+            - SPRING_PROFILES_ACTIVE=prod,swagger
+            - SPRING_DATASOURCE_URL=jdbc:mysql://securprod-mysql:3306/securprod?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - JHIPSTER_SLEEP=10 # gives time for the database to boot before the application
+            - SPRING_DATA_JEST_URI=http://securprod-elasticsearch:9200
+        ports:
+            - 8080:8080
+    securprod-mysql:
+        extends:
+            file: mysql.yml
+            service: securprod-mysql
+    securprod-elasticsearch:
+        extends:
+            file: elasticsearch.yml
+            service: securprod-elasticsearch
