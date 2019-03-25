@@ -1,0 +1,61 @@
+{
+    "name": "Delivery",
+    "fields": [
+        {
+            "fieldName": "borderDelivery",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "valuationNumber",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "deliveryDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "category",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "zone",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "deliveryDeliveryType",
+            "otherEntityRelationshipName": "delivery",
+            "relationshipName": "deliveryDeliveryType"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "client",
+            "otherEntityRelationshipName": "delivery",
+            "relationshipName": "client",
+            "otherEntityField": "code"
+        },
+        {
+            "relationshipName": "productDelivery",
+            "otherEntityName": "productDelivery",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "deliveryDeliveryTypeProduct",
+            "otherEntityName": "deliveryDeliveryTypeProduct",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190325135647",
+    "entityTableName": "delivery",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

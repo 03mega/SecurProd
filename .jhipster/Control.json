@@ -1,0 +1,30 @@
+{
+    "name": "Control",
+    "fields": [
+        {
+            "fieldName": "controlDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "parcelControl",
+            "otherEntityRelationshipName": "control",
+            "relationshipName": "parcelControl"
+        }
+    ],
+    "changelogDate": "20190325135646",
+    "entityTableName": "control",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

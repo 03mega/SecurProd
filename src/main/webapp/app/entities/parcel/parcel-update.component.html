@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-parcel-heading">Create or edit a Parcel</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!parcel.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="parcel.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_barreCode">Barre Code</label>
+                    <input type="text" class="form-control" name="barreCode" id="field_barreCode"
+                        [(ngModel)]="parcel.barreCode" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_pageNumber">Page Number</label>
+                    <input type="number" class="form-control" name="pageNumber" id="field_pageNumber"
+                        [(ngModel)]="parcel.pageNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateCreated">Date Created</label>
+                    <div class="input-group">
+                        <input id="field_dateCreated" type="text" class="form-control" name="dateCreated" ngbDatepicker  #dateCreatedDp="ngbDatepicker" [(ngModel)]="parcel.dateCreated"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateCreatedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dateChanged">Date Changed</label>
+                    <div class="input-group">
+                        <input id="field_dateChanged" type="text" class="form-control" name="dateChanged" ngbDatepicker  #dateChangedDp="ngbDatepicker" [(ngModel)]="parcel.dateChanged"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dateChangedDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_delivery">Delivery</label>
+                    <select class="form-control" id="field_delivery" name="delivery" [(ngModel)]="parcel.delivery" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deliveryOption.id === parcel.delivery?.id ? parcel.delivery : deliveryOption" *ngFor="let deliveryOption of deliveries; trackBy: trackDeliveryById">{{deliveryOption.borderDelivery}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_parcelControl">Parcel Control</label>
+                    <select class="form-control" id="field_parcelControl" name="parcelControl" [(ngModel)]="parcel.parcelControl" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parcelControlOption.id === parcel.parcelControl?.id ? parcel.parcelControl : parcelControlOption" *ngFor="let parcelControlOption of parcelcontrols; trackBy: trackParcelControlById">{{parcelControlOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_parcelProducts">Parcel Products</label>
+                    <select class="form-control" id="field_parcelProducts" name="parcelProducts" [(ngModel)]="parcel.parcelProducts" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="parcelProductsOption.id === parcel.parcelProducts?.id ? parcel.parcelProducts : parcelProductsOption" *ngFor="let parcelProductsOption of parcelproducts; trackBy: trackParcelProductsById">{{parcelProductsOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

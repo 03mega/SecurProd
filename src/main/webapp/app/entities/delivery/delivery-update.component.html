@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-delivery-heading">Create or edit a Delivery</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!delivery.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="delivery.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_borderDelivery">Border Delivery</label>
+                    <input type="text" class="form-control" name="borderDelivery" id="field_borderDelivery"
+                        [(ngModel)]="delivery.borderDelivery" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_valuationNumber">Valuation Number</label>
+                    <input type="text" class="form-control" name="valuationNumber" id="field_valuationNumber"
+                        [(ngModel)]="delivery.valuationNumber" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deliveryDate">Delivery Date</label>
+                    <div class="input-group">
+                        <input id="field_deliveryDate" type="text" class="form-control" name="deliveryDate" ngbDatepicker  #deliveryDateDp="ngbDatepicker" [(ngModel)]="delivery.deliveryDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="deliveryDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_category">Category</label>
+                    <input type="text" class="form-control" name="category" id="field_category"
+                        [(ngModel)]="delivery.category" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_zone">Zone</label>
+                    <input type="text" class="form-control" name="zone" id="field_zone"
+                        [(ngModel)]="delivery.zone" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_client">Client</label>
+                    <select class="form-control" id="field_client" name="client" [(ngModel)]="delivery.client" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="clientOption.id === delivery.client?.id ? delivery.client : clientOption" *ngFor="let clientOption of clients; trackBy: trackClientById">{{clientOption.code}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_productDelivery">Product Delivery</label>
+                    <select class="form-control" id="field_productDelivery" name="productDelivery" [(ngModel)]="delivery.productDelivery" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="productDeliveryOption.id === delivery.productDelivery?.id ? delivery.productDelivery : productDeliveryOption" *ngFor="let productDeliveryOption of productdeliveries; trackBy: trackProductDeliveryById">{{productDeliveryOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_deliveryDeliveryTypeProduct">Delivery Delivery Type Product</label>
+                    <select class="form-control" id="field_deliveryDeliveryTypeProduct" name="deliveryDeliveryTypeProduct" [(ngModel)]="delivery.deliveryDeliveryTypeProduct" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="deliveryDeliveryTypeProductOption.id === delivery.deliveryDeliveryTypeProduct?.id ? delivery.deliveryDeliveryTypeProduct : deliveryDeliveryTypeProductOption" *ngFor="let deliveryDeliveryTypeProductOption of deliverydeliverytypeproducts; trackBy: trackDeliveryDeliveryTypeProductById">{{deliveryDeliveryTypeProductOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

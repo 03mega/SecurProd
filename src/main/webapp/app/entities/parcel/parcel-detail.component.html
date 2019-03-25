@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="parcel">
+            <h2><span>Parcel</span> {{parcel.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Barre Code</span></dt>
+                <dd>
+                    <span>{{parcel.barreCode}}</span>
+                </dd>
+                <dt><span>Page Number</span></dt>
+                <dd>
+                    <span>{{parcel.pageNumber}}</span>
+                </dd>
+                <dt><span>Date Created</span></dt>
+                <dd>
+                    <span>{{parcel.dateCreated}}</span>
+                </dd>
+                <dt><span>Date Changed</span></dt>
+                <dd>
+                    <span>{{parcel.dateChanged}}</span>
+                </dd>
+                <dt><span>Delivery</span></dt>
+                <dd>
+                    <div *ngIf="parcel.delivery">
+                        <a [routerLink]="['/delivery', parcel.delivery?.id, 'view']">{{parcel.delivery?.borderDelivery}}</a>
+                    </div>
+                </dd>
+                <dt><span>Parcel Control</span></dt>
+                <dd>
+                    <div *ngIf="parcel.parcelControl">
+                        <a [routerLink]="['/parcel-control', parcel.parcelControl?.id, 'view']">{{parcel.parcelControl?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Parcel Products</span></dt>
+                <dd>
+                    <div *ngIf="parcel.parcelProducts">
+                        <a [routerLink]="['/parcel-products', parcel.parcelProducts?.id, 'view']">{{parcel.parcelProducts?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/parcel', parcel.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

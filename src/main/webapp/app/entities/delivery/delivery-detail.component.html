@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="delivery">
+            <h2><span>Delivery</span> {{delivery.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Border Delivery</span></dt>
+                <dd>
+                    <span>{{delivery.borderDelivery}}</span>
+                </dd>
+                <dt><span>Valuation Number</span></dt>
+                <dd>
+                    <span>{{delivery.valuationNumber}}</span>
+                </dd>
+                <dt><span>Delivery Date</span></dt>
+                <dd>
+                    <span>{{delivery.deliveryDate}}</span>
+                </dd>
+                <dt><span>Category</span></dt>
+                <dd>
+                    <span>{{delivery.category}}</span>
+                </dd>
+                <dt><span>Zone</span></dt>
+                <dd>
+                    <span>{{delivery.zone}}</span>
+                </dd>
+                <dt><span>Client</span></dt>
+                <dd>
+                    <div *ngIf="delivery.client">
+                        <a [routerLink]="['/client', delivery.client?.id, 'view']">{{delivery.client?.code}}</a>
+                    </div>
+                </dd>
+                <dt><span>Product Delivery</span></dt>
+                <dd>
+                    <div *ngIf="delivery.productDelivery">
+                        <a [routerLink]="['/product-delivery', delivery.productDelivery?.id, 'view']">{{delivery.productDelivery?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Delivery Delivery Type Product</span></dt>
+                <dd>
+                    <div *ngIf="delivery.deliveryDeliveryTypeProduct">
+                        <a [routerLink]="['/delivery-delivery-type-product', delivery.deliveryDeliveryTypeProduct?.id, 'view']">{{delivery.deliveryDeliveryTypeProduct?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/delivery', delivery.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

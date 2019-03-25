@@ -1,0 +1,27 @@
+{
+    "name": "ProgramProduct",
+    "fields": [],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "program",
+            "otherEntityRelationshipName": "programProduct",
+            "relationshipName": "program"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "product",
+            "otherEntityRelationshipName": "programProduct",
+            "relationshipName": "product"
+        }
+    ],
+    "changelogDate": "20190325135654",
+    "entityTableName": "program_product",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

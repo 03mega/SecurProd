@@ -1,0 +1,27 @@
+{
+    "name": "Stamp",
+    "fields": [
+        {
+            "fieldName": "eNumber",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "parcel",
+            "otherEntityRelationshipName": "stamp",
+            "relationshipName": "parcel",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190325135656",
+    "entityTableName": "stamp",
+    "dto": "no",
+    "pagination": "infinite-scroll",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
